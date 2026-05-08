@@ -1,4 +1,4 @@
-public class Inventario {
+public class InventarioAlmacen {
     private static int LIMITE_MESES_ANTIGUEDAD = 12;
     private static double PORCENTAJE_DESCUENTO_ANTIGUEDAD = 0.15;
     private static int LIMITE_DIAS_ROTACION = 60;
