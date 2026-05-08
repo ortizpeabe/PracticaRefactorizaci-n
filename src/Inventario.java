@@ -24,7 +24,7 @@ public class Inventario {
         return valorBase - descuentoAntiguedad - penalizacionRotacion + bonificacionStock + ajusteCategoria;
     }
 
-    private static double calcularAjusteCategoria(String tipoCategoria, double valorBase) {
+    public static double calcularAjusteCategoria(String tipoCategoria, double valorBase) {
         double ajusteCategoria = 0;
         if (tipoCategoria.equals("premium")) {
             ajusteCategoria = valorBase * PORCENTAJE_AJUSTE_PREMIUM;
@@ -34,7 +34,7 @@ public class Inventario {
         return ajusteCategoria;
     }
 
-    private static double calcularBonificacionStock(int stockActual, double valorBase) {
+    public static double calcularBonificacionStock(int stockActual, double valorBase) {
         double bonificacionStock = 0;
         if (stockActual > LIMITE_STOCK_ALTO) {
             bonificacionStock = valorBase * PORCENTAJE_BONIFICACION_STOCK;
@@ -42,7 +42,7 @@ public class Inventario {
         return bonificacionStock;
     }
 
-    private static double calcularPenalizacionRotacion(int diasDesdeUltimaVenta, double valorBase) {
+    public static double calcularPenalizacionRotacion(int diasDesdeUltimaVenta, double valorBase) {
         double penalizacionRotacion = 0;
         if (diasDesdeUltimaVenta > LIMITE_DIAS_ROTACION) {
             penalizacionRotacion = valorBase * PORCENTAJE_PENALIZACION_ROTACION;
@@ -50,7 +50,7 @@ public class Inventario {
         return penalizacionRotacion;
     }
 
-    private static double calcularDescuentoAntiguedad(int mesesCatalogo, double valorBase) {
+    public static double calcularDescuentoAntiguedad(int mesesCatalogo, double valorBase) {
         double descuentoAntiguedad = 0;
         if (mesesCatalogo > LIMITE_MESES_ANTIGUEDAD) {
             descuentoAntiguedad = valorBase * PORCENTAJE_DESCUENTO_ANTIGUEDAD;
