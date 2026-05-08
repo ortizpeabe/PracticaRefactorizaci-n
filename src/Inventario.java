@@ -5,10 +5,7 @@ public class Inventario {
         double valorBase = numeroProductos * precioUnitario;
 // Descuento por antigüedad (si lleva más de 12 meses
 // en catálogo)
-        double descuentoAntiguedad = 0;
-        if (mesesCatalogo > 12) {
-            descuentoAntiguedad = valorBase * 0.15;
-        }
+        double descuentoAntiguedad = calcularDescuentoAntiguedad(mesesCatalogo, valorBase);
 // Penalización por baja rotación (más de 60 días sin vender)
         double penalizacionRotacion = 0;
         if (diasDesdeUltimaVenta > 60) {
@@ -28,5 +25,13 @@ public class Inventario {
         }
 // Cálculo final
         return valorBase - descuentoAntiguedad - penalizacionRotacion + bonificacionStock + ajusteCategoria;
+    }
+
+    private static double calcularDescuentoAntiguedad(int mesesCatalogo, double valorBase) {
+        double descuentoAntiguedad = 0;
+        if (mesesCatalogo > 12) {
+            descuentoAntiguedad = valorBase * 0.15;
+        }
+        return descuentoAntiguedad;
     }
 }
