@@ -1,4 +1,12 @@
 public class Inventario {
+    private static int LIMITE_MESES_ANTIGUEDAD = 12;
+    private static double PORCENTAJE_DESCUENTO_ANTIGUEDAD = 0.15;
+    private static int LIMITE_DIAS_ROTACION = 60;
+    private static double PORCENTAJE_PENALIZACION_ROTACION = 0.10;
+    private static int LIMITE_STOCK_ALTO= 100;
+    private static double PORCENTAJE_BONIFICACION_STOCK = 0.05;
+    private static double PORCENTAJE_AJUSTE_PREMIUM = 0.20;
+    private static double PORCENTAJE_AJUSTE_BASICA = -0.05;
     public double calcularTotalInventario(int numeroProductos, double precioUnitario,
                                           int mesesCatalogo, int diasDesdeUltimaVenta, int stockActual, String tipoCategoria) {
 // Cálculo del valor base del inventario
