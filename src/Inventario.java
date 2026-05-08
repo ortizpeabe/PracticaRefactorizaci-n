@@ -7,24 +7,39 @@ public class Inventario {
 // en catálogo)
         double descuentoAntiguedad = calcularDescuentoAntiguedad(mesesCatalogo, valorBase);
 // Penalización por baja rotación (más de 60 días sin vender)
-        double penalizacionRotacion = 0;
-        if (diasDesdeUltimaVenta > 60) {
-            penalizacionRotacion = valorBase * 0.10;
-        }
+        double penalizacionRotacion = calcularPenalizacionRotacion(diasDesdeUltimaVenta, valorBase);
 // Bonificación por stock alto (más de 100 unidades)
-        double bonificacionStock = 0;
-        if (stockActual > 100) {
-            bonificacionStock = valorBase * 0.05;
-        }
+        double bonificacionStock = calcularBonificacionStock(stockActual, valorBase);
 // Ajuste por tipo de categoría
+        double ajusteCategoria = calcularAjusteCategoria(tipoCategoria, valorBase);
+// Cálculo final
+        return valorBase - descuentoAntiguedad - penalizacionRotacion + bonificacionStock + ajusteCategoria;
+    }
+
+    private static double calcularAjusteCategoria(String tipoCategoria, double valorBase) {
         double ajusteCategoria = 0;
         if (tipoCategoria.equals("premium")) {
             ajusteCategoria = valorBase * 0.20;
         } else if (tipoCategoria.equals("basica")) {
             ajusteCategoria = -valorBase * 0.05;
         }
-// Cálculo final
-        return valorBase - descuentoAntiguedad - penalizacionRotacion + bonificacionStock + ajusteCategoria;
+        return ajusteCategoria;
+    }
+
+    private static double calcularBonificacionStock(int stockActual, double valorBase) {
+        double bonificacionStock = 0;
+        if (stockActual > 100) {
+            bonificacionStock = valorBase * 0.05;
+        }
+        return bonificacionStock;
+    }
+
+    private static double calcularPenalizacionRotacion(int diasDesdeUltimaVenta, double valorBase) {
+        double penalizacionRotacion = 0;
+        if (diasDesdeUltimaVenta > 60) {
+            penalizacionRotacion = valorBase * 0.10;
+        }
+        return penalizacionRotacion;
     }
 
     private static double calcularDescuentoAntiguedad(int mesesCatalogo, double valorBase) {
