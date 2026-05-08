@@ -29,7 +29,7 @@ public class InventarioAlmacen {
         if (tipoCategoria.equals("premium")) {
             ajusteCategoria = valorBase * PORCENTAJE_AJUSTE_PREMIUM;
         } else if (tipoCategoria.equals("basica")) {
-            ajusteCategoria = -valorBase * PORCENTAJE_AJUSTE_BASICA;
+            ajusteCategoria = valorBase * PORCENTAJE_AJUSTE_BASICA;
         }
         return ajusteCategoria;
     }
